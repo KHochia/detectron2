@@ -9,6 +9,8 @@ import time
 import warnings
 import cv2
 import tqdm
+import matplotlib.pyplot as plt
+
 
 from detectron2.config import get_cfg
 from detectron2.data.detection_utils import read_image
@@ -129,21 +131,21 @@ if __name__ == "__main__":
                     out_filename = args.output
                 visualized_output.save(out_filename)
             else:
-                cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-                cv2.imshow(WINDOW_NAME, visualized_output.get_image()[:, :, ::-1])
-                if cv2.waitKey(0) == 27:
-                    break  # esc to quit
+#                 cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
+                plt.imshow(visualized_output.get_image()[:, :, ::-1])
+#                 if cv2.waitKey(0) == 27:
+#                     break  # esc to quit
     elif args.webcam:
         assert args.input is None, "Cannot have both --input and --webcam!"
         assert args.output is None, "output not yet supported with --webcam!"
         cam = cv2.VideoCapture(0)
         for vis in tqdm.tqdm(demo.run_on_video(cam)):
-            cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-            cv2.imshow(WINDOW_NAME, vis)
-            if cv2.waitKey(1) == 27:
-                break  # esc to quit
-        cam.release()
-        cv2.destroyAllWindows()
+#             cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
+            plt.imshow(WINDOW_NAME, vis)
+#             if cv2.waitKey(1) == 27:
+#                 break  # esc to quit
+#         cam.release()
+#         cv2.destroyAllWindows()
     elif args.video_input:
         video = cv2.VideoCapture(args.video_input)
         width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -177,10 +179,10 @@ if __name__ == "__main__":
             if args.output:
                 output_file.write(vis_frame)
             else:
-                cv2.namedWindow(basename, cv2.WINDOW_NORMAL)
-                cv2.imshow(basename, vis_frame)
-                if cv2.waitKey(1) == 27:
-                    break  # esc to quit
+#                 cv2.namedWindow(basename, cv2.WINDOW_NORMAL)
+                plt.imshow(basename, vis_frame)
+#                 if cv2.waitKey(1) == 27:
+#                     break  # esc to quit
         video.release()
         if args.output:
             output_file.release()
