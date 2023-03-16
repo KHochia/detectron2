@@ -132,7 +132,7 @@ if __name__ == "__main__":
                 visualized_output.save(out_filename)
             else:
 #                 cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-                plt.imshow(get_image()[:, :, ::-1])
+                plt.imshow(visualized_output.get_image()[:, :, ::-1])
 #                 if cv2.waitKey(0) == 27:
 #                     break  # esc to quit
     elif args.webcam:
