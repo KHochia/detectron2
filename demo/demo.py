@@ -133,6 +133,7 @@ if __name__ == "__main__":
             else:
 #                 cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
                 plt.imshow(visualized_output.get_image()[:, :, ::-1])
+                plt.show()
 #                 if cv2.waitKey(0) == 27:
 #                     break  # esc to quit
     elif args.webcam:
