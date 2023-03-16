@@ -132,7 +132,7 @@ if __name__ == "__main__":
                 visualized_output.save(out_filename)
             else:
 #                 cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-                plt.imshow(visualized_output.get_image()[:, :, ::-1])
+                plt.imshow(get_image()[:, :, ::-1])
 #                 if cv2.waitKey(0) == 27:
 #                     break  # esc to quit
     elif args.webcam:
@@ -141,7 +141,7 @@ if __name__ == "__main__":
         cam = cv2.VideoCapture(0)
         for vis in tqdm.tqdm(demo.run_on_video(cam)):
 #             cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-            plt.imshow(WINDOW_NAME, vis)
+            plt.imshow(vis)
 #             if cv2.waitKey(1) == 27:
 #                 break  # esc to quit
 #         cam.release()
@@ -180,7 +180,7 @@ if __name__ == "__main__":
                 output_file.write(vis_frame)
             else:
 #                 cv2.namedWindow(basename, cv2.WINDOW_NORMAL)
-                plt.imshow(basename, vis_frame)
+                plt.imshow(vis_frame)
 #                 if cv2.waitKey(1) == 27:
 #                     break  # esc to quit
         video.release()
