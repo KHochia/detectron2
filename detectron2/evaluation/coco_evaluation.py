@@ -568,7 +568,7 @@ def _evaluate_predictions_on_coco(
     coco_gt,
     coco_results,
     iou_type,
-    kpt_oks_sigmas=None,
+    kpt_oks_sigmas=[0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05],
     cocoeval_fn=COCOeval_opt,
     img_ids=None,
     max_dets_per_image=None,
@@ -576,6 +576,8 @@ def _evaluate_predictions_on_coco(
     """
     Evaluate the coco results using COCOEval API.
     """
+
+    kpt_oks_sigmas=[0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
     assert len(coco_results) > 0
 
     if iou_type == "segm":
